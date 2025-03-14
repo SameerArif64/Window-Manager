@@ -22,7 +22,7 @@ class WindowManager(gw.Window):
             print(f"{i}: {window.title}")
         
         if len(matched_windows) == 1 or no_input:
-            return matched_windows[0]
+            return next((window for window in matched_windows if window.title.lower() == window_name), matched_windows[0])
         
         while True:
             try:
