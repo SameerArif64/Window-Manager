@@ -50,3 +50,11 @@ class WindowManager:
         """Close the window."""
         if self.window:
             self.window.close()
+
+    def bring_to_front(self):
+        """Bring the window to the front."""
+        if not self.window.isMinimized:
+            self.window.minimize()
+        self.window.restore()
+        # Bring the window to the front
+        self.window.activate()
