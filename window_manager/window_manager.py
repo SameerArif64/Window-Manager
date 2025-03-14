@@ -1,8 +1,12 @@
 import pygetwindow as gw
 
-class WindowManager:
+class WindowManager(gw.Window):
     def __init__(self, window_name: str, no_input: bool = False):
-        self.window = self._get_window(window_name, no_input)
+        window = self._get_window(window_name, no_input)
+        if window:
+            super().__init__(window._hWnd)
+        else:
+            self._hWnd = None
 
     def _get_window(self, window_name: str, no_input: bool = False):
         """Find windows matching the given name."""
@@ -32,29 +36,29 @@ class WindowManager:
     
     def minimize(self):
         """Minimize the window."""
-        if self.window and not self.window.isMinimized:
-            self.window.minimize()
+        if self._hWnd and not self.isMinimized:
+            self.minimize()
     
     def maximize(self):
         """Maximize the window."""
-        if self.window and not self.window.isMaximized:
-            self.window.maximize()
+        if self._hWnd and not self.isMaximized:
+            self.maximize()
     
     def restore(self):
         """Restore the window."""
-        if self.window and (self.window.isMinimized or self.window.isMaximized):
-            self.window.restore()
-            self.window.activate()
+        if self._hWnd and (self.isMinimized or self.isMaximized):
+            self.restore()
+            self.activate()
     
     def close(self):
         """Close the window."""
-        if self.window:
-            self.window.close()
-
+        if self._hWnd:
+            self.close()
+    
     def bring_to_front(self):
         """Bring the window to the front."""
-        if not self.window.isMinimized:
-            self.window.minimize()
-        self.window.restore()
-        # Bring the window to the front
-        self.window.activate()
+        if self._hWnd and not self.isMinimized:
+            self.minimize()
+        if self._hWnd:
+            self.restore()
+            self.activate()
