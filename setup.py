@@ -13,10 +13,10 @@ setup(
     dependency_links=dependency_links,
     author="Sameer Arif",
     author_email="supersameer64@gmail.com",
-    description="A utility to sanitize and reverse-sanitize filenames.",
+    description="A class provides a convenient way to interact with application windows on your system. It allows you to find, select, and perform actions such as minimizing, maximizing, restoring, and closing windows.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/SameerArif64/Path-Sanitizer",
+    url="https://github.com/SameerArif64/Window-Manager",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
