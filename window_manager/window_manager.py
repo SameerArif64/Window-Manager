@@ -57,8 +57,8 @@ class WindowManager(gw.Window):
     
     def bring_to_front(self):
         """Bring the window to the front."""
-        if self._hWnd and not self.isMinimized:
-            self.minimize()
-        if self._hWnd:
+        if self._hWnd: 
+            if not self.isMinimized:
+                self.minimize()
             self.restore()
             self.activate()
