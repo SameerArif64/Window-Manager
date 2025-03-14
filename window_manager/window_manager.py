@@ -14,15 +14,14 @@ class WindowManager(gw.Window):
         matched_windows = [w for w in windows if window_name.lower() in w.title.lower()]
         
         if not matched_windows:
-            print(f"No windows found with the name '{window_name}'.")
-            return None
+            raise Exception(f"No windows found with the name '{window_name}'.")
+        
+        if len(matched_windows) == 1 or no_input:
+            return next((window for window in matched_windows if window.title.lower() == window_name.lower()), matched_windows[0])
         
         print("Found windows:")
         for i, window in enumerate(matched_windows, 1):
             print(f"{i}: {window.title}")
-        
-        if len(matched_windows) == 1 or no_input:
-            return next((window for window in matched_windows if window.title.lower() == window_name.lower()), matched_windows[0])
         
         while True:
             try:
