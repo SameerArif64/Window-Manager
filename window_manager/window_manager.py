@@ -34,17 +34,17 @@ class WindowManager(gw.Window):
             except ValueError:
                 print("Invalid input. Please enter a valid number.")
     
-    def minimize(self):
+    def minimize2(self):
         """Minimize the window."""
         if self._hWnd and not self.isMinimized:
             self.minimize()
     
-    def maximize(self):
+    def maximize2(self):
         """Maximize the window."""
         if self._hWnd and not self.isMaximized:
             self.maximize()
     
-    def restore(self):
+    def restore2(self):
         """Restore the window."""
         if self._hWnd and (self.isMinimized or self.isMaximized):
             self.restore()
